@@ -95,6 +95,14 @@ impl<'gc, T: Collect + 'gc> Gc<'gc, T> {
             _invariant: PhantomData,
         }
     }
+
+    #[inline]
+    pub fn empty() -> Gc<'gc, T> {
+        Gc {
+            ptr: NonNull::dangling(),
+            _invariant: PhantomData,
+        }
+    }
 }
 
 impl<'gc, T: 'static> Gc<'gc, T> {
